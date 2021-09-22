@@ -10,3 +10,9 @@
   font-family: monospace;
   overflow: auto;
 }
+
+.info-response {
+  color: red;
+  margin-top: 2px;
+  font-size: 9px;
+}

@@ -1,2 +1,2 @@
 export * from "./tree/index";
-export * from "./Info";
+export * from "./info/Info";

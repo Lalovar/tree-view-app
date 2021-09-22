@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Response } from "./Response";
 import "./Info.css";
 
 export function Info() {
@@ -71,14 +72,25 @@ export function Info() {
                   <li>
                     <i>
                       ❓ Bonus: How would you prove that your results are
-                      exactly the same as the original? [Show your work in a new
-                      commit.]
+                      exactly the same as the original?
+                      <Response>
+                        By using the devtools and removing the spaces(&nbsp) for an
+                        element on level 2(ant), then applying{" "}
+                        <code>padding-left</code> and compared to the next 
+                        element(bear) until they are align.
+                        It may not be pixel perfect but it was faster than
+                        applying tabs with css:before like in this{" "}
+                        <code>
+                          <a href="https://codesandbox.io/s/tabs-with-css-s29tq">
+                            code sandbox
+                          </a>
+                        </code>
+                      </Response>
                     </i>
                   </li>
                   <li>
                     <i>
-                      ❓ Bonus: Can we number every line such that
-                      <code>root</code> starts with "1" and <code>ant</code>
+                      ❓ Bonus: Can we number every line such that <code>root</code> starts with "1" and <code>ant</code>
                       starts with 1.1 and ... <code>elephant</code> starts with
                       1.2.2.1? [Show your work in a new commit.]
                     </i>
