@@ -56,16 +56,16 @@ export function Info() {
               <div className="App-instructions">
                 <ol>
                   <li>
-                    Check out the file <code>./src/tree/index.js</code>.
+                    ✅ Check out the file <code>./src/tree/index.js</code>.
                   </li>
                   <li>
-                    Replace the inline <code>&nbsp</code> "styling" with an
+                    ✅ Replace the inline <code>&nbsp</code> "styling" with an
                     improved layout by editing the html and css in the{" "}
                     <code>./src/tree/index.js</code>
                     and <code>./tree/index.css</code> files.
                   </li>
                   <li>
-                    When the results look the same as the original, please
+                    ✅ When the results look the same as the original, please
                     commit changes to main and push to remote.
                   </li>
                   <li>
