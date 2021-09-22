@@ -18,6 +18,7 @@ ol ol > li:before {
   content: counters(item, ".") " ";
   margin-left: -20px;
 }
+
 li {
   margin-bottom: 16px;
 }

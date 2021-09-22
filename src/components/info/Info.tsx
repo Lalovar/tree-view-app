@@ -74,8 +74,8 @@ export function Info() {
                       ❓ Bonus: How would you prove that your results are
                       exactly the same as the original?
                       <Response>
-                        By using the devtools and removing the spaces(&nbsp) for
-                        an element on level 2(ant), then applying{" "}
+                        ✅ By using the devtools and removing the spaces(&nbsp)
+                        for an element on level 2(ant), then applying{" "}
                         <code>padding-left</code> and compared to the next
                         element(bear) until they are align. It may not be pixel
                         perfect but it was faster than applying tabs with
@@ -98,9 +98,9 @@ export function Info() {
                       starts with 1.1 and ... <code>elephant</code> starts with
                       1.2.2.1?
                       <Response>
-                        Done, it lost (more) pixel perfect consistency (it could
-                        be solved eventually same as previous bonus, but, I
-                        don't want to take too much time styling it), but,
+                        ✅ Done, it lost (more) pixel perfect consistency (it
+                        could be solved eventually same as previous bonus, but,
+                        I don't want to take too much time styling it), but,
                         again, faster and cleaner than doing it with JS.
                       </Response>
                     </i>
@@ -137,6 +137,10 @@ export function Info() {
                     <i>
                       ❓ Bonus: Redraw the tree upside down (reading bottom to
                       top: root, ant, bear...) [Show your work in a new commit.]
+                      <Response>
+                        ❌ Tried using flex-reverse but seems that it doesn't
+                        have effect on <code>ol</code> tags
+                      </Response>
                     </i>
                   </li>
                   <li>
@@ -144,7 +148,10 @@ export function Info() {
                       ❓ Bonus: After the first letter of each element, add as
                       many periods as the level the element is on. (Root is 0)
                       E.g.
-                      <code>d..og</code>. [Show your work in a new commit.]
+                      <code>d..og</code>.
+                      <Response>
+                        ✅ Done
+                      </Response>
                     </i>
                   </li>
                 </ol>

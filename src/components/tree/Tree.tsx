@@ -35,21 +35,33 @@ type TreeNodeType = {
 };
 
 const TreeNode = ({ name, level, children }: TreeNodeType) => {
+  const newLevel = children.length > 0 ? level + 1 : level;
+  const nameWithDots =
+    name.charAt(0) + getDots(level) + name.substring(1, name.length);
+
   return (
     <li>
-      {name}
+      {nameWithDots}
       {children.map((childNode, index) => {
         return (
           <ol>
             <TreeNode
               name={childNode.name}
-              level={level}
+              level={newLevel}
               children={childNode.children}
-              key={`${childNode.name}-${index}-${level}`}
+              key={`${childNode.name}-${index}-${newLevel}`}
             />
           </ol>
         );
       })}
     </li>
   );
+};
+
+const getDots = (totalOfDots: number) => {
+  let dotsString = "";
+  while (totalOfDots-- > 0) {
+    dotsString += ".";
+  }
+  return dotsString;
 };
