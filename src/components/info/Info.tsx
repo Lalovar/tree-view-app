@@ -116,21 +116,21 @@ export function Info() {
               <div className="App-instructions">
                 <ol>
                   <li>
-                    Check out the (empty) file <code>./src/tree/data.json</code>
-                    .
+                    ✅ Check out the (empty) file{" "}
+                    <code>./src/tree/data.json</code>.
                   </li>
                   <li>
-                    Add a JSON object to that file that represents our animal
+                    ✅ Add a JSON object to that file that represents our animal
                     tree. It should capture just the values and relationships
                     currently onscreen after step one.
                   </li>
                   <li>
-                    Update <code>./tree/index.js</code> to use your JSON object
-                    to draw the animal tree instead of the your (styled) inline
-                    text.
+                    ✅ Update <code>./tree/index.js</code> to use your JSON
+                    object to draw the animal tree instead of the your (styled)
+                    inline text.
                   </li>
                   <li>
-                    When the results look exactly the same as the original,
+                    ✅ When the results look exactly the same as the original,
                     please commit changes and push to remote.
                   </li>
                   <li>
