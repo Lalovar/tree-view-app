@@ -1,3 +1,27 @@
-.tree div {
+.tree ol {
   padding-left: 29px;
+}
+
+ol {
+  counter-reset: item;
+}
+
+ol > li {
+  counter-increment: item;
+}
+
+ol ol > li {
+  display: block;
+}
+
+ol ol > li:before {
+  content: counters(item, ".") " ";
+  margin-left: -20px;
+}
+li {
+  margin-bottom: 16px;
+}
+
+ol ol {
+  margin-top: 16px;
 }
