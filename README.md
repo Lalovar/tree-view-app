@@ -37,6 +37,6 @@ Checks for lint errors defined on `.eslintrc.json`.
     - [x] Cleanup files
     - [x] Setup ESLint rules
     - [x] Setup init layout
-- [ ] First, layout and style
-- [ ] Let's add interactions
+- [x] First, layout and style
+- [x] Let's add interactions
 - [ ] And persistence!

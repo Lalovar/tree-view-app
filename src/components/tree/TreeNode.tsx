@@ -19,6 +19,7 @@ type TreeNodeProps = {
   ) => void;
   totalOfSibilings: number;
   children: NodeType[] | [];
+  parentName: string;
 };
 
 export const TreeNode = ({
@@ -29,13 +30,17 @@ export const TreeNode = ({
   updateNode,
   totalOfSibilings,
   children,
+  parentName,
 }: TreeNodeProps) => {
   const [inputValue, setInputValue] = useState("");
+  const [inputBranchValue, setInputBranchValue] = useState("");
+  const [branchIconVisible, toggleBranchIconVisible] = useState(true);
   const newLevel = children.length > 0 ? level + 1 : level;
   const nameWithDots =
     name.charAt(0) + getDots(level) + name.substring(1, name.length);
+  const shouldDisplayBranchControllers = children.length || !branchIconVisible;
 
-  const handleKeyPress = useCallback(
+  const handleKeyPressAdd = useCallback(
     (
       event: React.KeyboardEvent<HTMLInputElement>,
       nodePath: string,
@@ -54,27 +59,59 @@ export const TreeNode = ({
     [inputValue]
   );
 
-  const handlebuttonClick = useCallback((nodePath: string, name: string) => {
-    updateNode(nodePath, NodeOperation.DELETE, name);
-  }, []);
-
   const handleInputChange = useCallback(
-    (event: React.SyntheticEvent<EventTarget>) => {
+    (
+      event: React.SyntheticEvent<EventTarget>,
+      setStateFun: React.Dispatch<React.SetStateAction<string>>
+    ) => {
       const value = (event.target as HTMLInputElement).value;
-      setInputValue(value);
+      setStateFun(value);
     },
     []
+  );
+
+  const handleKeyPressBranch = useCallback(
+    (event: React.KeyboardEvent<HTMLInputElement>, nodePath: string) => {
+      if (event.key === "Enter") {
+        console.log(inputBranchValue);
+        updateNode(nodePath, NodeOperation.BRANCH, inputBranchValue);
+        setInputBranchValue("");
+      }
+    },
+    [inputBranchValue]
   );
 
   return (
     <li>
       {nameWithDots}{" "}
       <span
-        className="tree-remove-button"
-        onClick={() => handlebuttonClick(nodePath, name)}
+        title={"Remove " + name}
+        className="tree-button"
+        onClick={() => updateNode(nodePath, NodeOperation.DELETE, name)}
       >
         ❌
+      </span>{" "}
+      <span
+        title={"Add a node under " + name}
+        className="tree-button"
+        onClick={() => toggleBranchIconVisible(!branchIconVisible)}
+        style={{
+          display: shouldDisplayBranchControllers ? "none" : "inline",
+        }}
+      >
+        ➕
       </span>
+      <input
+        type="text"
+        placeholder={`Add a node under ${name}`}
+        className="tree-input-side"
+        value={inputBranchValue}
+        onKeyPress={(evt) => handleKeyPressBranch(evt, nodePath)}
+        style={{
+          display: children.length || branchIconVisible ? "none" : "inline",
+        }}
+        onChange={(e) => handleInputChange(e, setInputBranchValue)}
+      />
       {children.map((childNode, index) => {
         return (
           <ol>
@@ -86,6 +123,7 @@ export const TreeNode = ({
               updateNode={updateNode}
               totalOfSibilings={children.length}
               children={childNode.children}
+              parentName={name}
               key={`${childNode.name}-${index}-${newLevel}`}
             />
           </ol>
@@ -96,13 +134,13 @@ export const TreeNode = ({
           <br />
           <input
             type="text"
-            placeholder={`Add a new node at level ${level}`}
+            placeholder={`Add under ${parentName}`}
             className="tree-input"
             value={inputValue}
             onKeyPress={(evt) =>
-              handleKeyPress(evt, nodePath, totalOfSibilings)
+              handleKeyPressAdd(evt, nodePath, totalOfSibilings)
             }
-            onChange={handleInputChange}
+            onChange={(e) => handleInputChange(e, setInputValue)}
           />
         </>
       )}

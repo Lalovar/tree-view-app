@@ -3,14 +3,19 @@
   margin-left: -19px;
   margin-top: 15px;
 }
+.tree-input-side {
+  background-color: white;
+  font-size: 11px;
+  border: none;
+}
 
-.tree-remove-button {
+.tree-button {
   font-size: 10px;
   opacity: 0.5;
 }
 
-.tree-remove-button:hover,
-.tree-remove-button:focus {
+.tree-button:hover,
+.tree-button:focus {
   opacity: 1;
   cursor: pointer;
 }

@@ -71,11 +71,11 @@ export function Info() {
                   </li>
                   <li>
                     <i>
-                      ❓ Bonus: How would you prove that your results are
+                      ✅ Bonus: How would you prove that your results are
                       exactly the same as the original?
                       <Response>
-                        ✅ By using the devtools and removing the spaces(&nbsp)
-                        for an element on level 2(ant), then applying{" "}
+                        By using the devtools and removing the spaces(&nbsp) for
+                        an element on level 2(ant), then applying{" "}
                         <code>padding-left</code> and compared to the next
                         element(bear) until they are align. It may not be pixel
                         perfect but it was faster than applying tabs with
@@ -93,14 +93,14 @@ export function Info() {
                   </li>
                   <li>
                     <i>
-                      ❓ Bonus: Can we number every line such that{" "}
+                      ✅ Bonus: Can we number every line such that{" "}
                       <code>root</code> starts with "1" and <code>ant</code>
                       starts with 1.1 and ... <code>elephant</code> starts with
                       1.2.2.1?
                       <Response>
-                        ✅ Done, it lost (more) pixel perfect consistency (it
-                        could be solved eventually same as previous bonus, but,
-                        I don't want to take too much time styling it), but,
+                        Done, it lost (more) pixel perfect consistency (it could
+                        be solved eventually same as previous bonus, but, I
+                        don't want to take too much time styling it), but,
                         again, faster and cleaner than doing it with JS.
                       </Response>
                     </i>
@@ -145,13 +145,10 @@ export function Info() {
                   </li>
                   <li>
                     <i>
-                      ❓ Bonus: After the first letter of each element, add as
+                      ✅ Bonus: After the first letter of each element, add as
                       many periods as the level the element is on. (Root is 0)
                       E.g.
                       <code>d..og</code>.
-                      <Response>
-                        ✅ Done
-                      </Response>
                     </i>
                   </li>
                 </ol>
@@ -165,18 +162,18 @@ export function Info() {
               <div className="App-instructions">
                 <ol>
                   <li>
-                    Add a text input field below the last element in each level,
-                    at the right indentation level. There should be one text
-                    input at level 0 after frog, one at level 1 directly above
-                    that, one below elephant at level 3, and another beneath
-                    that at level 2.
+                    ✅Add a text input field below the last element in each
+                    level, at the right indentation level. There should be one
+                    text input at level 0 after frog, one at level 1 directly
+                    above that, one below elephant at level 3, and another
+                    beneath that at level 2.
                   </li>
                   <li>
-                    When someone types a new word in the text box and hits
+                    ✅When someone types a new word in the text box and hits
                     enter, add that word to the tree and redraw it.
                   </li>
                   <li>
-                    Add an
+                    ✅Add an
                     <span role="img" aria-label="cross">
                       {" "}
                       ❌
@@ -189,30 +186,40 @@ export function Info() {
                     , remove that node.
                   </li>
                   <li>
-                    When you can add and remove items from the tree, commit your
-                    changes and push to remote.
+                    ✅When you can add and remove items from the tree, commit
+                    your changes and push to remote.
                   </li>
                   <li>
                     <i>
                       ❓ Bonus: Add a toggle to the page that alphabetizes the
                       tree, when toggled one way, or restores the tree to the
-                      order items were entered when toggled the other way. [Show
-                      your work in a new commit.]
+                      order items were entered when toggled the other way.{" "}
+                      <Response>Gonna leave this at the end</Response>
                     </i>
                   </li>
                   <li>
                     <i>
                       ❓ Bonus: How would you prove that elements can be added
-                      and removed from the tree properly? [Show your work in a
-                      new commit.]
+                      and removed from the tree properly?
+                      <Response>
+                        Not quite sure what this means... How I'd prove it to
+                        the user? Maybe adding a loading state to improve the
+                        feedback
+                      </Response>
                     </i>
                   </li>
                   <li>
                     <i>
-                      ❓ Bonus: How could you add a new level to an existing
+                      ✅ Bonus: How could you add a new level to an existing
                       element. For example, if I wanted to add a level 1 animal
                       from a level 0 animal. How could I add a level 1 "lion" to
                       ant?
+                      <Response>
+                        The way i did this made me want to refactor the
+                        'createNewNode' method, following the approach I took o
+                        while doing this 'branchNewNode' method, maybe at the
+                        end I'll do it.
+                      </Response>
                     </i>
                   </li>
                 </ol>

@@ -2,7 +2,12 @@ import { useCallback, useState } from "react";
 import { TreeNode } from "./TreeNode";
 import data from "./data.json";
 import "./Tree.css";
-import { createNewNode, deleteNode, NodeOperation } from "./treeUtils";
+import {
+  branchNewNode,
+  createNewNode,
+  deleteNode,
+  NodeOperation,
+} from "./treeUtils";
 
 export function Tree() {
   const [treeData, setTreeData] = useState(data);
@@ -20,6 +25,9 @@ export function Tree() {
           break;
         case NodeOperation.DELETE:
           setTreeData(deleteNode(path, treeData));
+          break;
+        case NodeOperation.BRANCH:
+          setTreeData(branchNewNode(path, treeData, value));
           break;
         default:
       }
@@ -45,6 +53,7 @@ export function Tree() {
                     totalOfSibilings={treeData.children.length}
                     children={animalNode.children}
                     key={`${animalNode.name}-${index}`}
+                    parentName={treeData.name}
                   />
                 );
               })}
