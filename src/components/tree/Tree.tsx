@@ -1,8 +1,32 @@
-import "./Tree.css";
+import { useCallback, useState } from "react";
+import { TreeNode } from "./TreeNode";
 import data from "./data.json";
+import "./Tree.css";
+import { createNewNode, deleteNode, NodeOperation } from "./treeUtils";
 
 export function Tree() {
-  const treeData = data;
+  const [treeData, setTreeData] = useState(data);
+
+  const updateNode = useCallback(
+    (
+      path: string,
+      nodeOperation: NodeOperation,
+      value?: string,
+      totalOfChilds?: number
+    ) => {
+      switch (nodeOperation) {
+        case NodeOperation.CREATE:
+          setTreeData(createNewNode(path, treeData, value, totalOfChilds));
+          break;
+        case NodeOperation.DELETE:
+          setTreeData(deleteNode(path, treeData));
+          break;
+        default:
+      }
+    },
+    []
+  );
+
   return (
     <div className="tree-container">
       <div className="tree">
@@ -15,6 +39,10 @@ export function Tree() {
                   <TreeNode
                     name={animalNode.name}
                     level={1}
+                    isLastNode={index + 1 === treeData.children.length}
+                    nodePath={`${index}`}
+                    updateNode={updateNode}
+                    totalOfSibilings={treeData.children.length}
                     children={animalNode.children}
                     key={`${animalNode.name}-${index}`}
                   />
@@ -27,41 +55,3 @@ export function Tree() {
     </div>
   );
 }
-
-type TreeNodeType = {
-  name: String;
-  level: number;
-  children: TreeNodeType[] | [];
-};
-
-const TreeNode = ({ name, level, children }: TreeNodeType) => {
-  const newLevel = children.length > 0 ? level + 1 : level;
-  const nameWithDots =
-    name.charAt(0) + getDots(level) + name.substring(1, name.length);
-
-  return (
-    <li>
-      {nameWithDots}
-      {children.map((childNode, index) => {
-        return (
-          <ol>
-            <TreeNode
-              name={childNode.name}
-              level={newLevel}
-              children={childNode.children}
-              key={`${childNode.name}-${index}-${newLevel}`}
-            />
-          </ol>
-        );
-      })}
-    </li>
-  );
-};
-
-const getDots = (totalOfDots: number) => {
-  let dotsString = "";
-  while (totalOfDots-- > 0) {
-    dotsString += ".";
-  }
-  return dotsString;
-};

@@ -1,3 +1,20 @@
+.tree-input {
+  background-color: #efefef;
+  margin-left: -19px;
+  margin-top: 15px;
+}
+
+.tree-remove-button {
+  font-size: 10px;
+  opacity: 0.5;
+}
+
+.tree-remove-button:hover,
+.tree-remove-button:focus {
+  opacity: 1;
+  cursor: pointer;
+}
+
 .tree ol {
   padding-left: 29px;
 }
