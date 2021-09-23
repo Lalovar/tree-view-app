@@ -2,37 +2,26 @@ import { useCallback, useState } from "react";
 import { TreeNode } from "./TreeNode";
 import data from "./data.json";
 import "./Tree.css";
-import {
-  branchNewNode,
-  createNewNode,
-  deleteNode,
-  NodeOperation,
-} from "./treeUtils";
+import { createNode, deleteNode, NodeOperation } from "./treeUtils";
+import { ThreeInput } from "./TreeInput";
 
 export function Tree() {
   const [treeData, setTreeData] = useState(data);
 
   const updateNode = useCallback(
-    (
-      path: string,
-      nodeOperation: NodeOperation,
-      value?: string,
-      totalOfChilds?: number
-    ) => {
-      switch (nodeOperation) {
-        case NodeOperation.CREATE:
-          setTreeData(createNewNode(path, treeData, value, totalOfChilds));
-          break;
-        case NodeOperation.DELETE:
-          setTreeData(deleteNode(path, treeData));
-          break;
-        case NodeOperation.BRANCH:
-          setTreeData(branchNewNode(path, treeData, value));
-          break;
-        default:
+    (path: string, nodeOperation: NodeOperation, value?: string) => {
+      if (
+        value?.length &&
+        (nodeOperation === NodeOperation.CREATE ||
+          nodeOperation === NodeOperation.BRANCH)
+      ) {
+        setTreeData(createNode(path, treeData, value, nodeOperation));
+      }
+      if (nodeOperation === NodeOperation.DELETE) {
+        setTreeData(deleteNode(path, treeData));
       }
     },
-    []
+    [treeData]
   );
 
   return (
@@ -57,6 +46,14 @@ export function Tree() {
                   />
                 );
               })}
+              <ThreeInput
+                placeholder={`add node under ${treeData.name}`}
+                nodePath={""}
+                callback={updateNode}
+                nodeOperation={NodeOperation.CREATE}
+                totalOfSibilings={treeData.children.length}
+                visible={treeData.children.length !== 0}
+              />
             </ol>
           </li>
         </ol>

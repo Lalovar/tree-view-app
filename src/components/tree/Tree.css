@@ -2,10 +2,12 @@
   background-color: #efefef;
   margin-left: -19px;
   margin-top: 15px;
+  font-size: 9px;
 }
 .tree-input-side {
   background-color: white;
-  font-size: 11px;
+  margin-left: 5px;
+  font-size: 9px;
   border: none;
 }
 

@@ -215,10 +215,16 @@ export function Info() {
                       from a level 0 animal. How could I add a level 1 "lion" to
                       ant?
                       <Response>
-                        The way i did this made me want to refactor the
-                        'createNewNode' method, following the approach I took o
-                        while doing this 'branchNewNode' method, maybe at the
-                        end I'll do it.
+                        <s>
+                          The way i did this made me want to refactor the
+                          'createNewNode' method, following the approach I took
+                          o while doing this 'branchNewNode' method, maybe at
+                          the end I'll do it.{" "}
+                        </s>{" "}
+                        I just did it, is much easier to read now. I consolidate
+                        the create and update node functions into one. Basically
+                        is a function that recieves a "node path" and I iterate
+                        with that over the tree and insert/update the element
                       </Response>
                     </i>
                   </li>

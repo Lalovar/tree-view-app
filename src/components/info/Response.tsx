@@ -1,9 +1,9 @@
 import React from "react";
 
-type Props = {
+type ResponseProps = {
   children: React.ReactChild | React.ReactChild[];
 };
 
-export function Response({ children }: Props) {
+export function Response({ children }: ResponseProps) {
   return <p className="info-response">{children}</p>;
 }
