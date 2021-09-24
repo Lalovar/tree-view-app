@@ -25,6 +25,18 @@ export function Info() {
       >
         Info
       </button>
+      <button
+        className="repo-button"
+        id={"openBtn"}
+        onClick={handleModalToggle}
+      >
+        <a href="https://github.com/Lalovar/tree-view-app">
+        <img
+          src="https://findicons.com/files/icons/2779/simple_icons/48/github_48_black.png"
+          alt="github img"
+        />
+        </a>
+      </button>
       <div
         id="modalContainer"
         className="modal-container"
