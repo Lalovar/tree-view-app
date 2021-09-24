@@ -1,32 +1,52 @@
+import React from "react";
 import { useCallback, useState } from "react";
 import { TreeNode } from "./TreeNode";
-import data from "./data.json";
 import "./Tree.css";
-import { createNode, deleteNode, NodeOperation } from "./treeUtils";
+import {
+  createNode,
+  deleteNode,
+  NodeOperation,
+  NodeType,
+  usePrevious,
+} from "../../controllers/treeUtils";
 import { ThreeInput } from "./TreeInput";
+import { updateRemoteData } from "../../controllers/networkOperations";
 
-export function Tree() {
+type TreeProps = {
+  data?: {
+    name: string;
+    children: NodeType[];
+  };
+  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  setError: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function Tree({ data, setLoading, setError }: TreeProps) {
   const [treeData, setTreeData] = useState(data);
+  const prevTreeData = usePrevious(treeData);
 
   const updateNode = useCallback(
     (path: string, nodeOperation: NodeOperation, value?: string) => {
+      setLoading(true);
       if (
         value?.length &&
         (nodeOperation === NodeOperation.CREATE ||
           nodeOperation === NodeOperation.BRANCH)
       ) {
         setTreeData(createNode(path, treeData, value, nodeOperation));
+        updateRemoteData(treeData, nodeOperation, setError, setLoading);
       }
       if (nodeOperation === NodeOperation.DELETE) {
         setTreeData(deleteNode(path, treeData));
+        updateRemoteData(treeData, nodeOperation, setError, setLoading);
       }
     },
     [treeData]
   );
 
   return (
-    <div className="tree-container">
-      <div className="tree">
+    <div className="tree">
+      {treeData && (
         <ol>
           <li>
             {treeData.name}
@@ -57,7 +77,7 @@ export function Tree() {
             </ol>
           </li>
         </ol>
-      </div>
+      )}
     </div>
   );
 }

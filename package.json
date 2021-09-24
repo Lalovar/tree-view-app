@@ -6,6 +6,7 @@
     "@types/node": "^12.20.25",
     "@types/react": "^17.0.21",
     "@types/react-dom": "^17.0.9",
+    "axios": "^0.21.4",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -13,7 +14,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "lint" : "npx eslint . --ext .tsx --ext .ts",
+    "lint": "npx eslint . --ext .tsx --ext .ts",
     "build": "react-scripts build"
   },
   "devDependencies": {

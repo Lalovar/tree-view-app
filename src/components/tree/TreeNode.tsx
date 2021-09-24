@@ -5,7 +5,7 @@ import {
   getNameWithDots,
   NodeOperation,
   TreeNodeProps,
-} from "./treeUtils";
+} from "../../controllers/treeUtils";
 
 export const TreeNode = ({
   name,

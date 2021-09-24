@@ -1,10 +1,12 @@
+import { useRef, useEffect } from "react";
+
 export enum NodeOperation {
   CREATE,
   BRANCH,
   DELETE,
 }
 
-type NodeType = {
+export type NodeType = {
   name: string;
   children: NodeType[] | [];
 };
@@ -24,6 +26,13 @@ export type TreeNodeProps = {
   children: NodeType[] | [];
   parentName: string;
 };
+
+export function usePrevious(value: any) {
+  const ref = useRef();
+  const prev = ref.current;
+  ref.current = value;
+  return prev;
+}
 
 export function getNameWithDots(name: string, level: number) {
   return name.charAt(0) + getDots(level) + name.substring(1, name.length);

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NodeOperation } from "./treeUtils";
+import { NodeOperation } from "../../controllers/treeUtils";
 
 type ThreeInputProps = {
   placeholder?: string;
