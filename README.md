@@ -38,7 +38,7 @@ Checks for lint errors defined on `.eslintrc.json`.
 - [x] First, layout and style
 - [x] Let's add interactions
 - [x] And persistence!
-- [ ] Upload build to firebase
+- [x] Upload build to firebase
 - [ ] Unit tests
 - [ ] Fix layout
 - [ ] Fix numered list
