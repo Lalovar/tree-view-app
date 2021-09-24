@@ -241,18 +241,18 @@ export function Info() {
                 <a href="https://jsonbin.io/">https://jsonbin.io/</a>
                 <ol>
                   <li>
-                    Setup: You will need to create an account to obtain the api
-                    key. Then, create the Bin where you will Read and Update
+                    ✅ Setup: You will need to create an account to obtain the
+                    api key. Then, create the Bin where you will Read and Update
                     your JSON payload by referencing the Bin ID. See:{" "}
                     <a href="https://jsonbin.io/api-reference/bins/read">
                       Bins API Reference
                     </a>
                   </li>
                   <li>
-                    Save your tree whenever a new element is added or deleted.
+                    ✅Save your tree whenever a new element is added or deleted.
                   </li>
                   <li>
-                    Commit your changes and push to remote when you can make a
+                    ✅Commit your changes and push to remote when you can make a
                     changes to the tree that are fetched from the API on page
                     refresh.
                   </li>
@@ -260,6 +260,10 @@ export function Info() {
                     <i>
                       ❓Bonus: Add a debouncer to only save the tree when it's
                       changed.
+                      <Response>
+                        Aren't we already saving the tree on the server on every
+                        action?
+                      </Response>
                     </i>
                   </li>
                   <li>
@@ -267,6 +271,15 @@ export function Info() {
                       ❓Bonus: How would you use this API to make a (more or
                       less) collaborative tree editing app? How collaborative
                       could it be? What limits would it have?
+                      <Response>
+                        I started making the changes for this but not yet fully
+                        implemented, basically I have another BIN storing the
+                        users and the date they get logged in and base on that I
+                        determine if they are active (2 min threshold) and maybe
+                        also adding a function that fetches every 20 secs during
+                        2 mins (2 mins the max time per session to save
+                        resources).
+                      </Response>
                     </i>
                   </li>
                 </ol>

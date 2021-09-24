@@ -7,10 +7,12 @@ import {
   deleteNode,
   NodeOperation,
   NodeType,
-  usePrevious,
 } from "../../controllers/treeUtils";
 import { ThreeInput } from "./TreeInput";
-import { updateRemoteData } from "../../controllers/networkOperations";
+import {
+  fetchRemoteData,
+  updateRemoteData,
+} from "../../controllers/networkOperations";
 
 type TreeProps = {
   data?: {
@@ -23,7 +25,6 @@ type TreeProps = {
 
 export function Tree({ data, setLoading, setError }: TreeProps) {
   const [treeData, setTreeData] = useState(data);
-  const prevTreeData = usePrevious(treeData);
 
   const updateNode = useCallback(
     (path: string, nodeOperation: NodeOperation, value?: string) => {
@@ -46,6 +47,11 @@ export function Tree({ data, setLoading, setError }: TreeProps) {
 
   return (
     <div className="tree">
+      <button
+        onClick={() => fetchRemoteData(setTreeData, setError, setLoading)}
+      >
+        Sych data with server
+      </button>
       {treeData && (
         <ol>
           <li>

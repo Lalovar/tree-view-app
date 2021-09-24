@@ -22,21 +22,23 @@ You will also see any lint errors in the console.
 
 Builds the app for production to the `build/` folder.
 
-
 ### `npm run lint`
-
 
 Checks for lint errors defined on `.eslintrc.json`.
 
-
------- 
+---
 
 ## Checklist
-- [x] Initial commit 
-    - [x] Create react project using [CRA typescript template](https://create-react-app.dev/docs/adding-typescript)
-    - [x] Cleanup files
-    - [x] Setup ESLint rules
-    - [x] Setup init layout
+
+- [x] Initial commit
+  - [x] Create react project using [CRA typescript template](https://create-react-app.dev/docs/adding-typescript)
+  - [x] Cleanup files
+  - [x] Setup ESLint rules
+  - [x] Setup init layout
 - [x] First, layout and style
 - [x] Let's add interactions
-- [ ] And persistence!
+- [x] And persistence!
+- [ ] Upload build to firebase
+- [ ] Unit tests
+- [ ] Fix layout
+- [ ] Fix numered list

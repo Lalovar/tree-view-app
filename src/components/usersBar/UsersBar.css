@@ -1,0 +1,29 @@
+.users-container {
+  margin: 10px auto 10px auto;
+  padding: 5px 10px 5px 10px;
+  border-radius: 1em;
+  background-color: #efefef;
+  text-align: center;
+  width: 70%;
+  white-space: nowrap;
+  font-family: monospace;
+  overflow: auto;
+}
+
+.user-toggle {
+  display: inline-block;
+}
+
+.user-logout {
+  opacity: 0.5;
+}
+
+.user-logout:hover,
+.user-logout:focus {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.users-online-list {
+  line-height: 1em;
+}

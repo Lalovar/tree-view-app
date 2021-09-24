@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
 import { setTimeout } from "timers";
-import "./App.css";
 import { Tree, Info } from "./components";
+import { UsersBar } from "./components/usersBar/UsersBar";
 import { fetchRemoteData } from "./controllers/networkOperations";
+import "./App.css";
+import { askForUser } from "./controllers/UserUtils";
 
 function App() {
   const [remoteData, setRemoteData] = useState();
+  const [user, setUser] = useState("");
+  const [users, setUsers] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [errorVisibility, setErrorVisibility] = useState(false);
 
   useEffect(() => {
+    askForUser(setUser, setUsers);
     fetchRemoteData(setRemoteData, setError, setLoading);
   }, []);
 
@@ -33,6 +38,9 @@ function App() {
         <div className="error-container error-text">{error}</div>
       )}
       <Info />
+      {users !== undefined && (
+        <UsersBar user={user} setError={setError} setLoading={setLoading} />
+      )}
       <div className="tree-container">
         {remoteData && (
           <Tree data={remoteData} setLoading={setLoading} setError={setError} />
